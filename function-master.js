@@ -2,32 +2,94 @@
 // Function 1 - Object Values ////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
+/**
+ * I: FUNCTION SHOULD TAKE AN OBJECT
+ * O: FUNCTION SHOULD RETURN THE OBJECT'S VALUES IN AN ARRAY
+ * C: FUNCTION EXPECTS TO RECEIVE AN OBJECT WITH KEY VALUE PAIRS
+ * E: N/A
+ */
+
 function objectValues(object) {
-    // code
+    // create storage array
+    let storageArr = [];
+    // loop through the object param
+    for (var key in object) { 
+        storageArr.push(object[key]); // push the object's values to storageArr
+    } return storageArr; // return the storage array
 } 
 
 //////////////////////////////////////////////////////////////////////
 // Function 2 - Keys to String ///////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
-function keysToString(object) {
+/**
+ * I; FUNCTION SHOULD TAKE AN OBJECT
+ * O: FUNCTION SHOULD RETURN THE OBJECT'S KEYS IN A STRING WITH A SPACE BETWEEN EACH KEY
+ * C: FUNCTION EXPECTS TO RECEIVE AN OBJECT WITH KEY VALUE PAIRS
+ * E: OUTPUT CAN'T HAVE A SPACE AT END OF STRING
+ */
 
+function keysToString(object) {
+    // create storage string
+    let storageStr = '';
+    // loop through the object param
+    for (var key in object) {
+        // concatenate the value with a ' ' space and add it to storageStr
+        storageStr += key + ' ';
+    }
+    // remove the last space in the string
+    storageStr = storageStr.slice(0, -1);
+    return storageStr; // return the string
 }
 
 //////////////////////////////////////////////////////////////////////
 // Function 3 - Values to String /////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
+/**
+ * I: FUNCTION SHOULD TAKE AN OBJECT
+ * O: FUNCTION SHOULD RETURN THE VALUES IN A STRING WITH EACH VALUE SEPERATED W/ A SPACE
+ * C: FUNCTION EXPECTS TO RECEIVE AN OBJECT WITH KEY VALUE PAIRS
+ * E: OUTPUT CAN'T HAVE A SPACE AT THE END OF STRING
+ */
+
 function valuesToString(object) {
-    
+    // create storage string
+    let storageStr = '';
+    // loop through the object param
+    for (var key in object) {
+        // if the object's key is a string...
+        if (typeof object[key] === 'string') {
+            // concatenate the key with a ' ' space and add it to storageStr
+            storageStr += object[key] + ' ';
+        } 
+    }
+      // remove the last space in the string
+      storageStr = storageStr.slice(0, -1) 
+      return storageStr;
 }
 
 //////////////////////////////////////////////////////////////////////
 // Function 4 - Array or Object //////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
+/**
+ * I: FUNCTION RECEIVES A COLLECTION PARAM
+ * O: FUNCTION RETURNS EITHER 'ARRAY' OR 'OBJECT' DEPENDING ON ARGUMENT'S DATA TYPE
+ * C: FUNCTION EXPECTS TO RECEIVE AN ARRAY OR AN OBJECT AS ARGUMENT
+ * E: N/A
+  */
+
 function arrayOrObject(collection) {
-    
+    // if collection is an object...
+    if (typeof collection === 'object' && !Array.isArray(collection) && collection !== null) {
+        // return 'object'
+        return 'object';
+        // else if the collection is an array...
+    } else if (Array.isArray(collection)) {
+        // return array
+        return 'array';
+    }
 }
 
 //////////////////////////////////////////////////////////////////////
