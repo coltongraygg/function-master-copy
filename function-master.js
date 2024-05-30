@@ -96,41 +96,115 @@ function arrayOrObject(collection) {
 // Function 5 - Capitalize Word //////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
+/**
+ *  Should take a string of one word, and return the word with its first letter capitalized
+ * 
+ * I: FUNCTION RECEIVES A STRING OF ONE WORD
+ * O: FUNCTION RETURNS THE STRING WITH ITS FIRST LETTER CAPITALIZED
+ * C: FUNCTION EXPECTS TO RECEIVE A STRING 
+ * E: N/A
+ */
+
 function capitalizeWord(string) {
-    
+    // capitalize the first character in string, remove the original first character, return the value
+    return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
 //////////////////////////////////////////////////////////////////////
 // Function 6 - Capitalize All Words /////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
+/**
+ * Should take a string of words and return a string with all the words capitalized
+ * 
+ * I: FUNCTION RECEIVES A STRING OF WORDS
+ * O: FUNCTION RETURNS A STRING WITH THE FIRST CHAR OF EACH WORD CAPITALIZED
+ * C: FUNCTION EXPECTS TO RECEIVE A STRING
+ * E: N/A
+ */
+
 function capitalizeAllWords(string) {
-    
+    // use string.split(' ') to split the input string into an array of words
+        // use .map to to replace the first character of each word with it's capitalized version
+            // use .join(' ') to place every word back into a single string seperated by a space between words
+   return string.split(' ').map(string => string.replace(string.charAt(0), string.charAt(0).toUpperCase())).join(' ');
 }
+
 
 //////////////////////////////////////////////////////////////////////
 // Function 7 - Welcome Message //////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
-function welcomeMessage(object) {
+/**
+ * Should take an object with a name property and return 'Welcome <Name>!'
+ * 
+ * I: FUNCTION RECEIVES AN OBJECT
+ * O: FUNCTION RETURNS 'WELCOME <NAME>!' 
+ * C: FUNCTION EXPECTS TO RECEIVE AN OBJECT WITH A NAME PROPERTY THAT CONTAINS A VALUE
+ * E: N/A
+ */
 
+function welcomeMessage(object) {
+    // convert the first character of the object's name (string) to uppercase and assign it to the variable objName
+    objName = object['name'].charAt(0).toUpperCase() + object['name'].slice(1);
+    // concatenate & return
+    return 'Welcome ' + objName + '!';
 }
 
 //////////////////////////////////////////////////////////////////////
 // Function 8 - Profile Info /////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
-function profileInfo(object) {
+/**
+ * Should take an object with a name an a species and return '<Name> is a <Species>'
+ * 
+ * I: FUNCTION RECEIVES AN OBJECT
+ * O: FUNCTION RETURNS '<NAME> IS A <SPECIES>'
+ * C: FUNCTION EXPECTS TO RECEIVE AN OBJECT WITH A NAME AND SPECIES PROPERTY (BOTH WITH VALUES!)
+ * E: N/A
+ */
 
+function profileInfo(object) {
+    // convert the first character of the object's name (string) to uppercase and assign it to the variable objName
+    objName = object['name'].charAt(0).toUpperCase() + object['name'].slice(1);
+    // convert the first character of the object's species to uppercase and assign it to the variable objSpecies
+    objSpecies = object['species'].charAt(0).toUpperCase() + object['species'].slice(1);
+    // concatenate & return
+    return objName + ' is a ' + objSpecies;
 }
+
 
 //////////////////////////////////////////////////////////////////////
 // Function 9 - Maybe Noises /////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
-function maybeNoises(object) {
+/**
+ *  Should take an object, if this object has a noises array return them as a string separated by a space, if there are no noises return 'there are no noises'
+ * 
+ * I: FUNCTION RECEIVES AN OBJECT
+ * O: FUNCTION RETURNS THE NOISES ARRAY AS A STRING SEPERATED BY A SPACE OR FUNCTION RETURNS 'THERE ARE NO NOISES'
+ * C: FUNCTION RETURNS THE NOISES ARRAY ONLY IF THE OBJECT HAS A NOISES ARRAY, OTHERWISE IT RETURNS 'THERE ARE NO NOISES'
+ * E: N/A
+ */
 
+function maybeNoises(object) {
+    // create storage string for noises
+    let storageStr = '';
+    // if the object has the noises array && if the noises array is not empty...
+    if (object['noises'] && object['noises'].length > 0) {
+        // loop through noises array
+        for (var i = 0; i < object['noises'].length; i++) {
+            // for each index of the noise array, pass it to storageStr concatenated with a space ' '
+            storageStr += object['noises'][i] + ' ';     
+            // return the storageStr and remove the last space ' '       
+        } return storageStr.trim();
+    } else {
+        // otherwise do this
+        return 'there are no noises'; 
+    }
 }
+
+
 
 //////////////////////////////////////////////////////////////////////
 // Function 10 - Has Words ///////////////////////////////////////////
@@ -184,7 +258,19 @@ function removeProperties(object, array) {
 // Function 16 - Dedup ///////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
+/** 
+ * Should take an array and return an array with all the duplicates removed
+ * 
+ * I: FUNCTION RECEIVES AN ARRAY
+ * O: FUNCTION RETURNS AN ARRAY WITH ALL THE DUPLICATES REMOVED
+ * C: FUNCTION EXPECTS TO RECEIVE AN ARRAY
+ * E: N/A
+ */
+
+// dont think of it taking in array of items and returning that array with the duplicates removed (!.includes)
+
 function dedup(array) {
+
 
 }
 
