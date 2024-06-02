@@ -124,10 +124,17 @@ function capitalizeWord(string) {
  */
 
 function capitalizeAllWords(string) {
-    // use string.split(' ') to split the input string into an array of words
-        // use .map to to replace the first character of each word with it's capitalized version
-            // use .join(' ') to place every word back into a single string seperated by a space between words
-   return string.split(' ').map(string => string.replace(string.charAt(0), string.charAt(0).toUpperCase())).join(' ');
+    // create an array - each index will be a different word in the string
+    let stringArr = string.split(' '); 
+    // create a storage array for the final result 
+    let resultStr = [];
+    // loop through the stringArr array - each index is a different word from string
+    for (var i = 0; i < stringArr.length; i++) {
+        // remove the first character, capitalize it and add it back, push it into the resultStr array
+        resultStr.push(stringArr[i][0].toUpperCase() + stringArr[i].slice(1));
+    }
+    // join (' ') the words back into a single string with a space between each word
+    return resultStr.join(' ');
 }
 
 
