@@ -217,15 +217,55 @@ function maybeNoises(object) {
 // Function 10 - Has Words ///////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
-function hasWord(string, word) {
+/**
+ * Should take a string of words and a word and return true if <word> is in <string of words>, otherwise return false.
+ * 
+ * I: FUNCTION RECEIVES A STRING OF WORDS AND A STRING OF A SINGLE WORD
+ * O: FUNCTION RETURNS TRUE IF WORD IS IN STRING OF WORDS, OTHERWISE FALSE
+ * C: FUNCTION EXPECTS TO RECEIVE TWO STRINGS AS ARGUMENTS IN PARAMS
+ * E: N/A
+ */
 
+function hasWord(string, word) {
+    // convert string to an array - with each ' ', create a new index for the word in the string
+    let stringArr  = string.split(' ');
+    // create a counter variable starting at 0 
+    let counter = 0
+    // loop through the stringArr
+    for (var i = 0; i < stringArr.length; i++) {
+        // if the index of string === word, add 1 to the counter
+        if (stringArr[i] === word) {
+            // add 1 to the counter if so
+            counter++;
+        }
+    }
+    // if the counter is positive, return true
+    if (counter > 0) {
+        return true;
+    // otherwise return fasle
+    } else {
+        return false;
+    }
 }
 
 //////////////////////////////////////////////////////////////////////
 // Function 11 - Add Friend //////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
+/**
+ * Should take a name and an object and add the name to the object's friends array then return the object
+ * 
+ * I: FUNCTION RECEIVES NAME (STRING) AND OBJECT (OBJECT) 
+ * O: FUNCTION ADDS THE NAME TO THE OBJECT'S FRIENDS ARRAY AND RETURNS THE OBJECT
+ * C: FUNCTION EXPECTS NAME TO BE A STRING AND EXPECTS OBJECT TO BE AN OBJECT
+ * E: N/A
+ */
+
 function addFriend (name, object) {
+    // push name to object's friends array
+    object['friends'].push(name);
+    // return object
+    return object;
 
 }
 
@@ -233,33 +273,127 @@ function addFriend (name, object) {
 // Function 12 - Is Friend ///////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
-function isFriend(name, object) {
+/**
+ * Should take a name and an object and return true if <name> is a friend of <object> and false otherwise
+ * 
+ * I: FUNCTION RECEIVES TWO PARAMS. NAME (STRING) AND OBJECT (OBJECT).
+ * O: FUNCTION RETURNS TRUE IF NAME IS A FRIEND OF OBJECT, FALSE OTHERWISE
+ * C: FUNCTION EXPECTS TO RECEIVE AN OBJECT THAT HAS A FRIENDS ARRAY 
+ * E: N/A
+ */
 
+function isFriend(name, object) {
+    // if object['friends'] does not exist...
+    if (!object['friends']) {
+        // return false
+        return false;
+    }
+    // loop through object's friends array
+    for (i = 0; i < object['friends'].length; i++) {
+        // if the index in the friends array = name...
+        if (object['friends'][i] === name) {
+            // return true
+            return true;
+        }
+    }  // otherwise return false
+    return false;
 }
 
 //////////////////////////////////////////////////////////////////////
 // Function 13 - Non-Friends /////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
-function nonFriends(name, array) {
+/** 
+ * Should take a name and a list of people, and return a list of all the names that <name> is not friends with
+ * 
+ * I: FUNCTION RECEIVES A NAME (STRING) AND ARRAY (ARRAY) 
+ * O: FUNCTION RETURNS A LIST OF ALL THE NAMES THAT NAME (STRING PARAM) IS NOT FRIENDS WITH 
+ * C: FUNCTION EXPECTS TO RECEIVE A STRING AS NAME AND ARRAY AS ARRAY
+ * E: N/A
+ */
 
+
+function nonFriends(name, array) {
+    // create storage array for nonFriends
+    let nonFriendsArr = [];
+    // loop through the outer array
+    for (let i = 0; i < array.length; i++) {
+        // create variable w/ boolean value to check if the friend array index [j] === name
+        let isFriend = false;
+
+
+        // loop through the inner array - the friends array of the current person
+        for (let j = 0; j < array[i].friends.length; j++) {
+            // if the current friend array index === name...
+            if (array[i].friends[j] === name) {
+                // set isFriend to true
+                isFriend = true;
+                // break the inner loop
+                break;
+            }
+
+
+        }
+        //if isFriend is false && current person's name !== name...
+        if (!isFriend && array[i].name !== name) {
+            // push the current person's name to nonFriendsArr
+            nonFriendsArr.push(array[i].name);
+        }
+    }
+    // return nonFriendsArr
+    return nonFriendsArr;
 }
 
 //////////////////////////////////////////////////////////////////////
 // Function 14 - Update Object ///////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
-function updateObject(object, key, value) {
+/**
+ * Should take an object, a key and a value. Should update the property <key> on <object> with new <value>. If <key> does not exist on <object> create it.
+ * I: FUNCTION RECEIVES AN OBJECT, KEY, AND VALUE .
+ * O: FUNCTION UPDATES THE PROPERTY KEY ON OBJECT WITH NEW VALUE. IF KEY DOES NOT EXIST ON OBJECT, FUNCTION CREATES IT. 
+ * C: FUNCTION MUST RECEIVE AN OBJECT, KEY, AND VALUE.
+ * E: N/A
+ */
 
+function updateObject(object, key, value) {
+    // if key doesn't exist in object...
+    if (!object[key]) {
+        // assign value to key in object
+        object[key] = value;
+        // otherwise...
+    } else {  
+        // assign value to key in object
+        object[key] = value; 
+    } 
+    // return object
+    return object;
 }
 
 //////////////////////////////////////////////////////////////////////
 // Function 15 - Remove Properties ///////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
-function removeProperties(object, array) {
+/**
+ * Should take an object and an array of strings. Should remove any properties on <object> that are listed in <array>
+ * I: FUNCTION RECEIVES AN OBJECT AND AN ARRAY OF STRINGS
+ * O: FUNCTION REMOVES ANY PROPERTIES ON THE OBJECT THAT ARE LISTED IN THE ARRAY
+ * C: FUNCTION EXPECTS TO RECEIVE AN ARRAY WITH VALUES
+ * E: N/A
+ */
 
+
+function removeProperties(object, array) {
+    // loop through the array 
+    for (let i = 0; i < array.length; i++) {
+        // if object has a property with the name array[i]...
+        if (object.hasOwnProperty(array[i])) {
+            // delete the property
+            delete object[array[i]];
+        }
+    }
 }
+
 
 //////////////////////////////////////////////////////////////////////
 // Function 16 - Dedup ///////////////////////////////////////////////
