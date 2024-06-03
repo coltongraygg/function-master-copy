@@ -408,11 +408,20 @@ function removeProperties(object, array) {
  * E: N/A
  */
 
-// dont think of it taking in array of items and returning that array with the duplicates removed (!.includes)
 
 function dedup(array) {
-
-
+    // create storage array
+    let storageArr = [];
+    // loop through array
+    for (i = 0; i < array.length; i++) {
+        // if storageArr does not have the [i] of array...
+        if (!storageArr.includes(array[i])) {
+            // push the array[i] to storageArr
+            storageArr.push(array[i]);
+        }
+    }
+     // return storageArr
+     return storageArr;
 }
 
 //////////////////////////////////////////////////////////////////////
